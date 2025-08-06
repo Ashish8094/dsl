@@ -25,24 +25,4 @@ def binary_search_iterative(arr, target):
             high = mid - 1
     return -1
 
-def compare_binary_search():
-    sizes = [10, 100, 1000, 10000]
-    print(f"{'Array Size':>10} | {'Recursive Time (ms)':>20} | {'Iterative Time (ms)':>20}")
-    print("-" * 60)
 
-    for size in sizes:
-        arr = sorted(random.sample(range(size * 2), size))
-        target = random.choice(arr)
-
-        start = time.perf_counter()
-        binary_search_recursive(arr, target, 0, len(arr) - 1)
-        recursive_time = (time.perf_counter() - start) * 1000  
-
-        start = time.perf_counter()
-        binary_search_iterative(arr, target)
-        iterative_time = (time.perf_counter() - start) * 1000  
-
-        print(f"{size:>10} | {recursive_time:>20.6f} | {iterative_time:>20.6f}")
-
-if __name__ == "__main__":
-    compare_binary_search()
