@@ -1,4 +1,4 @@
-from collections import que
+from collections import deque
 
 def display_menu():
     print("\n--- Call Center Menu ---")
@@ -14,13 +14,14 @@ def main():
 
     queues = []
     for i in range(n):
-        queues.append(queue())
+        queues.append(deque())
 
     while True:
         display_menu()
         choice = input("Enter your choice (1-4): ")
 
         if choice == '1':
+
             operator = int(input(f"Choose operator (1 to {n}): ")) - 1
             if 0 <= operator < n:
                 caller = input("Enter caller name: ")
@@ -30,14 +31,17 @@ def main():
                 print("Invalid operator number.")
 
         elif choice == '2':
+
             operator = int(input(f"Choose operator (1 to {n}): ")) - 1
             if 0 <= operator < n:
+                
                 if len(queues[operator]) > 0:
                     served = queues[operator].popleft()
                     print(f"Caller '{served}' served from Operator {operator + 1}'s queue.")
                 else:
                     print("Queue is empty.")
             else:
+
                 print("Invalid operator number.")
 
         elif choice == '3':
@@ -56,4 +60,4 @@ def main():
             print("Please enter a number between 1 and 4.")
 
 if __name__ == "__main__":
-    main()
+    main()              
