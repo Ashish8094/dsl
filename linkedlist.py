@@ -1,21 +1,24 @@
 class Node:
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, roll_no, name, marks):
+        self.roll_no = roll_no
+        self.name = name
+        self.marks = marks
         self.next = None
-
 
 def main():
     head = None
     tail = None
 
-    n = int(raw_input("Enter the number of nodes: "))
-    print "Enter the elements: "
-    
-    # read all elements in one line and split
-    elements = map(int, raw_input().split())
+    m = int(input("Enter the number of students: "))
 
-    for x in elements[:n]:   # take only n elements
-        temp = Node(x)
+    for i in range(m):
+        print(f"\nEnter details for student {i + 1}:")
+        roll_no = int(input("Roll No: "))
+        name = input("Name: ")
+        marks = float(input("Marks: "))
+
+        temp = Node(roll_no, name, marks)
+
         if head is None:
             head = temp
             tail = temp
@@ -23,13 +26,11 @@ def main():
             tail.next = temp
             tail = temp
 
-    print "Elements of linked list are:",
-    current = head
-    while current is not None:
-        print current.data,
-        current = current.next
-    print
-
+    print("\nStudent List:")
+    curr = head
+    while curr:
+        print(f"Roll No: {curr.roll_no}, Name: {curr.name}, Marks: {curr.marks}")
+        curr = curr.next
 
 if __name__ == "__main__":
     main()
