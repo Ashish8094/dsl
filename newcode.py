@@ -1,12 +1,12 @@
 # Node for the Linked List
 class Node:
-    def _init_(self, asc_num, bookname):
+    def __init__(self, asc_num, bookname):
         self.asc_num = asc_num
         self.bookname = bookname
         self.next = None
 
 class LinkedList:
-    def _init_(self):
+    def __init__(self):
         self.head = None
 
     def insert(self, asc_num, bookname):
@@ -41,7 +41,7 @@ class LinkedList:
             temp = temp.next
         return False
 
-    def _str_(self):
+    def __str__(self):
         result = []
         temp = self.head
         while temp:
@@ -49,9 +49,8 @@ class LinkedList:
             temp = temp.next
         return " -> ".join(result) if result else "Empty"
 
-
 class HashTable:
-    def _init_(self):
+    def __init__(self):
         self.table = [LinkedList() for _ in range(10)]
 
     def hash(self, asc_num):
@@ -66,14 +65,14 @@ class HashTable:
         return self.table[index].search(asc_num)
 
     def delete(self, asc_num):
-        index = self._hash(asc_num)
+        index = self.hash(asc_num)
         return self.table[index].delete(asc_num)
 
     def display(self):
         for i, linked_list in enumerate(self.table):
             print(f"Index {i}: {linked_list}")
 
-
+# Menu-driven interface
 ht = HashTable()
 while True:
     print("\nMenu:")
